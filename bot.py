@@ -43,16 +43,17 @@ def main():
     parser.add_argument(
         "-id",
         help="id чата телаграм",
+        required=True
+
     )
     args = parser.parse_args()
-    if args.id:
-        try:
-            while True:
-                get_homework_status(token_tg, token_devman, args.id)
-        except requests.exceptions.ReadTimeout:
-            pass
-        except requests.exceptions.ConnectionError:
-            pass
+    try:
+        while True:
+            get_homework_status(token_tg, token_devman, args.id)
+    except requests.exceptions.ReadTimeout:
+        pass
+    except requests.exceptions.ConnectionError:
+        pass
 
 
 if __name__ == "__main__":
