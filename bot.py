@@ -35,8 +35,8 @@ def start_telegram_bot(text_message, token_tg, chat_id):
 
 def main():
     load_dotenv()
-    TOKEN_TG = os.environ["TOKEN_TG"]
-    TOKEN_DEVMAN = os.environ["TOKEN_DEVMAN"]
+    token_tg = os.environ["TOKEN_TG"]
+    token_devman = os.environ["TOKEN_DEVMAN"]
     parser = argparse.ArgumentParser(
         description="Скрипт позволяет получать результаты провеки работ на сервисе dvmn.org"
     )
@@ -48,7 +48,7 @@ def main():
     if args.id:
         try:
             while True:
-                get_homework_status(TOKEN_TG, TOKEN_DEVMAN, args.id)
+                get_homework_status(token_tg, token_devman, args.id)
         except requests.exceptions.ReadTimeout:
             pass
         except requests.exceptions.ConnectionError:
