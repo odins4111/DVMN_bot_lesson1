@@ -38,7 +38,7 @@ def main():
     token_tg = os.environ["TOKEN_TG"]
     token_devman = os.environ["TOKEN_DEVMAN"]
     parser = argparse.ArgumentParser(
-        description="Скрипт позволяет получать результаты провеки работ на сервисе dvmn.org"
+        description="Скрипт позволяет получать результаты проверки работ на сервисе dvmn.org"
     )
     parser.add_argument(
         "-id",
