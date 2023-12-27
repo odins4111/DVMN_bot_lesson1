@@ -43,13 +43,12 @@ def main():
 
     )
     args = parser.parse_args()
-    try:
-        while True:
+    while True:
+        try:
             get_homework_status(token_tg, token_devman, args.id)
-    except requests.exceptions.ReadTimeout:
-        pass
-    except requests.exceptions.ConnectionError:
-        pass
+        except requests.exceptions.ReadTimeout:
+            pass
+        except requests.exceptions.ConnectionError:
 
 
 if __name__ == "__main__":
