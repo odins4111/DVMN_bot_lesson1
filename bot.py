@@ -30,6 +30,8 @@ def get_homework_status(token_tg, token_devman, chat_id):
 
 
 def main():
+    connection_attempts = 0
+    max_connection_attempts = 3
     load_dotenv()
     token_tg = os.environ["TOKEN_TG"]
     token_devman = os.environ["TOKEN_DEVMAN"]
@@ -49,6 +51,10 @@ def main():
         except requests.exceptions.ReadTimeout:
             pass
         except requests.exceptions.ConnectionError:
+            connection_attempts += 1
+            if connection_attempts == max_connection_attempts:
+                time.sleep(100)
+                connection_attempts = 0
 
 
 if __name__ == "__main__":
