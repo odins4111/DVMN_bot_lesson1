@@ -38,12 +38,12 @@ def main():
     token_tg = os.environ["TOKEN_TG"]
     token_devman = os.environ["TOKEN_DEVMAN"]
     parser = argparse.ArgumentParser(
-        description="Скрипт позволяет получать результаты проверки работ на сервисе dvmn.org"
+        description = "Скрипт позволяет получать результаты проверки работ на сервисе dvmn.org"
     )
     parser.add_argument(
         "-id",
-        help="id чата телаграм",
-        required=True
+        help = "id чата телаграм",
+        required = True
 
     )
     args = parser.parse_args()
