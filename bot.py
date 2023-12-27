@@ -6,9 +6,8 @@ import os
 import argparse
 
 
-def get_homework_status(token_tg, token_devman, chat_id):
+def get_homework_status(token_tg, token_devman, chat_id, timestamp):
     bot = telegram.Bot(token=token_tg)
-    timestamp = ""
     url = "https://dvmn.org/api/long_polling/"
     headers = {"Authorization": token_devman}
     payload = {"timestamp": timestamp}
@@ -32,6 +31,7 @@ def get_homework_status(token_tg, token_devman, chat_id):
 def main():
     connection_attempts = 0
     max_connection_attempts = 3
+    timestamp = ""
     load_dotenv()
     token_tg = os.environ["TOKEN_TG"]
     token_devman = os.environ["TOKEN_DEVMAN"]
@@ -47,7 +47,7 @@ def main():
     args = parser.parse_args()
     while True:
         try:
-            get_homework_status(token_tg, token_devman, args.id)
+            get_homework_status(token_tg, token_devman, args.id, timestamp)
         except requests.exceptions.ReadTimeout:
             pass
         except requests.exceptions.ConnectionError:
