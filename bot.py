@@ -17,7 +17,7 @@ def get_homework_status(token_tg, token_devman, chat_id):
     homeworks_roster = response.json()
     if homeworks_roster["status"] == "timeout":
         timestamp = homeworks_roster["timestamp_to_request"]
-    elif homeworks_roster["new_attempts"][0]["is_negative"] == False:
+    elif not homeworks_roster["new_attempts"][0]["is_negative"]:
         text_message = "У вас проверили работу - ({0}) \n\nПреподавателю все понравилось, можно приступать к следующему уроку!".format(
             homeworks_roster["new_attempts"][0]["lesson_title"]
         )
